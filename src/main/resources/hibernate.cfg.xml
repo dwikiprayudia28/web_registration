@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.jboss.org/dtd/hibernate/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">${db.password}</property>                
+        <property name="hibernate.connection.url">${db.url}</property>
+        <property name="hibernate.connection.username">${db.user}</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <!-- <mapping class="id.jexpress.model.JxJtr"></mapping> -->
+        <!-- <mapping class="id.jexpress.model.JxTicket"></mapping> -->
+        <!-- <mapping class="id.jexpress.model.JxTicketDetail"></mapping>
+        <mapping class="id.jexpress.model.JxMedia"></mapping>
+        <mapping class="id.jexpress.model.JxType"></mapping>
+        <mapping class="id.jexpress.model.JxDepartment"></mapping> -->
+	</session-factory>
+</hibernate-configuration>
