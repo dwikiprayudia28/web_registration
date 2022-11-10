@@ -1,14 +1,10 @@
 package id.jexpress.dao.impl;
 
 import id.jexpress.dao.UserDao;
-import id.jexpress.dto.UserChild;
-import id.jexpress.dto.UserDetail;
 import id.jexpress.model.User;
 import id.jexpress.util.PasswordEncoderGenerator;
 import id.jexpress.util.UserLoginAuthUtil;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -181,113 +177,5 @@ public class UserDaoImpl implements UserDao {
 		
 		return msg;
 	}
-
-	
-
-	
-
-	@Override
-	public UserDetail getUserById(Integer userId) {
-		
-		Query query = sessionFactory
-				.getCurrentSession()
-				.createSQLQuery(""
-						+ "SELECT "
-						+ "  a.id, "
-						+ "  a.nik, "
-						+ "  a.nik_ext,"
-						+ "  a.name,"
-						+ "  a.job_position_id, "
-						+ "  e.name AS job_position_name, "
-						+ "  a.departement_id, "
-						+ "  f.name AS department_name, "
-						+ "  a.job_pos_efective_date, "
-						+ "  a.company_id, "
-						+ "  d.name AS company_name, "
-						+ "  a.office_id, "
-						+ "  b.name AS office_name, "
-						+ "  a.imei,"
-						+ "  a.m_phone, "
-						+ "  a.m_phone2, "
-						+ "  a.is_registered, "
-						+ "  a.type_device, "
-						+ "  a.last_attn_id, "
-						+ "  a.approve_by, "
-						+ "  c.name AS approve_by_name, "
-						+ "  a.role,"
-						+ "  a.allow_photo,"
-						+ "  a.is_deleted "
-						+ "FROM "
-						+ "  jx_attn_user a "
-						+ "  LEFT JOIN jx_attn_office b ON a.office_id = b.id "
-						+ "  LEFT JOIN jx_attn_user c ON a.approve_by = c.id "
-						+ "  INNER JOIN jx_attn_company d ON a.company_id = d.id"
-						+ "  LEFT JOIN jx_attn_job_position e ON a.job_position_id = e.id "
-						+ "  LEFT JOIN jx_attn_department f ON a.departement_id = f.id "
-						+ "WHERE a.id = :p_user_id ; ")
-				.setParameter("p_user_id", userId);
-		
-		Object queryResult = query.list().get(0);
-		Object[] result = (Object[]) queryResult;
-		
-		UserDetail detail = new UserDetail();
-//		User user = new User(); 
-//		Office office = new Office();
-//		User userApprove = new User();
-//		
-//		int i = 0;
-//		
-//		user.setId((Integer) result[i++]);
-//		user.setNik((BigInteger) result[i++]);
-//		user.setNikExt((String) result[i++]);
-//		user.setName((String) result[i++]);
-//		user.setJobPositionId((Integer) result[i++]);
-//		detail.setJobPositionName((String) result[i++]);
-//		user.setDepartmentId((Integer) result[i++]);
-//		detail.setDepartmentName((String) result[i++]);
-//		user.setJobPosEfectiveDate((Date) result[i++]);
-//		
-//		try {
-//			if(user.getJobPosEfectiveDate()!=null){
-//				String sDate1 = user.getJobPosEfectiveDate().toString();
-//				Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(sDate1);
-//				user.setJobPosEfectiveDate(date1);
-//			}
-//			
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-	    
-//		user.setCompanyId((Integer) result[i++]);
-//		detail.setCompanyName((String) result[i++]);
-//		user.setOfficeId((Integer) result[i++]);
-//		office.setId(user.getOfficeId());
-//		office.setName((String) result[i++]);
-//		user.setImei((String) result[i++]);
-//		user.setmPhone((String) result[i++]);
-//		user.setmPhone2((String) result[i++]);
-//		user.setIsRegistered((Integer) result[i++]);
-//		user.setTypeDevice((Integer) result[i++]);
-//		user.setLastAttnId((Integer) result[i++]);
-//		user.setApproveBy((Integer) result[i++]);
-//		userApprove.setId(user.getApproveBy());
-//		userApprove.setName((String) result[i++]);
-//		user.setRole((Integer) result[i++]);
-//		user.setAllowPhoto((Integer) result[i++]);
-//		user.setIsDeleted((Integer) result[i++]);
-		
-		
-//		detail.setUser(user);
-//		detail.setOffice(office);
-//		detail.setUserApprove(userApprove);
-//		
-//		detail.setIsRegisteredStr("");
-//		detail.setRoleStr("");
-//		detail.setAllowPhotoStr("");
-//		detail.setIsDeletedStr("");
-		
-		return detail;
-	}
-
 
 }
